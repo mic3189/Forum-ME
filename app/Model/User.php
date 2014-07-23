@@ -34,4 +34,15 @@ class User extends AppModel
 			),
 		),
 	);
+
+	public function beforeSave($options = array())
+	{
+		// hash our password
+		if (isset($this->data[$this->alias]['password'])) 
+		{
+			$this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->data]['password']);
+		}
+
+		return parent::beforeSave($options);
+	}
 }

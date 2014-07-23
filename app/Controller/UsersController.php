@@ -15,5 +15,20 @@ class UsersController extends AppController
 
 	public function logout() {}
 
-	public function register() {}
+	public function register()
+	{
+		if($this->request->is('post'))
+		{
+			$this->User->create();
+			if($this->User->save($this->request->data))
+			{
+				$this->Session->setFlash(__('The user has been created.'));
+				$this->redirect(array('controller' => 'users', 'action' => 'login'));
+			}
+			else
+			{
+				$this->Session->setFlash(__('The user could not be created. Please, try again.'));
+			}
+		}
+	}
 }
