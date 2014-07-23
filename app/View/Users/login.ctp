@@ -17,6 +17,13 @@
 			      <?php echo $this->Form->input('password',array('class'=>'form-control'));?>
 			    </div>
 			  </div>
+				
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="remember-me">
+						Remember me <a href="forgot"><?php echo __('Here if you have forgotten your password') ?></a>
+					</label>
+				</div>
 			 
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
