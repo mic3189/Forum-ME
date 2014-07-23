@@ -39,6 +39,9 @@ class UsersController extends AppController
 			if($this->User->save($this->request->data))
 			{
 				$this->Session->setFlash(__('The user has been created.'));
+				$this->Session->write('Auth.User.id', $this->User->getId());
+				$this->Auth->login($this->data);
+        // $this->redirect(array('action' => 'index'));
 				$this->redirect(array('controller' => 'users', 'action' => 'profile'));
 			}
 			else

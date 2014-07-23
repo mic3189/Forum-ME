@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <?php echo $this->Html->link(__('Logo'),'/',array('class'=>'navbar-brand'));?>
+      <?php echo $this->Html->link(__('Forum ME'),'/',array('class'=>'navbar-brand'));?>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
