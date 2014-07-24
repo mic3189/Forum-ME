@@ -3,7 +3,7 @@
 class UsersController extends AppController
 {
 	public $uses = array('User');
-	public $helpers = array('Html', 'Form');
+	public $helpers = array('Html', 'Form', 'Session');
 
 	public function beforeFilter()
 	{

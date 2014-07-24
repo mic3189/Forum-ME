@@ -21,6 +21,9 @@
               <?php echo $this->Html->link(__('Profile'),array('controller'=>'users','action'=>'profile'))?>
             </li>
             <li>
+              <?php echo $this->Html->link(__('Forums'),array('controller'=>'forums','action'=>'index'))?>
+            </li>
+            <li>
               <?php echo $this->Html->link(__('Logout'),array('controller'=>'users','action'=>'logout'))?>
             </li>
           </ul>
