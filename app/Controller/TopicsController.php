@@ -4,12 +4,15 @@ class TopicsController extends AppController
 {
 	public $components = array('Paginator');
 	
-	public function beforeFilter() {
+	public function beforeFilter()
+	{
 		$this->Auth->allow('index','view');
 	}
 	
-	public function index($forumId=null) {
-		if (!$this->Topic->Forum->exists($forumId)) {
+	public function index($forumId=null)
+	{
+		if (!$this->Topic->Forum->exists($forumId))
+		{
 			throw new NotFoundException(__('Invalid forum'));
 		}
 		
@@ -20,12 +23,15 @@ class TopicsController extends AppController
 		$this->set('topics', $this->Paginator->paginate());
 	}
 	
-	public function add() {
+	public function add()
+	{
 		$forums = $this->Topic->Forum->find('list');
 		
-		if ($this->request->is('post')) {
+		if ($this->request->is('post'))
+		{
 			$this->request->data['Topic']['user_id'] = $this->Auth->user('id');
-			if ($this->Topic->save($this->request->data)) {
+			if ($this->Topic->save($this->request->data))
+			{
 				$this->Session->setFlash(__('Topic has been created'));
 				$this->redirect('/');
 			}
@@ -34,8 +40,10 @@ class TopicsController extends AppController
 		$this->set('forums',$forums);
 	}
 
-	public function view($id) {
-		if (!$this->Topic->exists($id)) {
+	public function view($id)
+	{
+		if (!$this->Topic->exists($id))
+		{
 			throw new NotFoundException(__('Invalid topic'));
 		}
 		
