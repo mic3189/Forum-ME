@@ -48,5 +48,7 @@ class AppController extends Controller
 		// title of the website
 		$title_for_layout = 'Our Forum';
 		$this->set(compact('title_for_layout'));
+
+		App::import('Model',array('CommonTable','UserTable'));
 	}
 }

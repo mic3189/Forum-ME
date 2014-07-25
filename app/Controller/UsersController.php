@@ -8,13 +8,13 @@ class UsersController extends AppController
 	public function beforeFilter()
 	{
 		parent::beforeFilter();
-		$this->Auth->allow('register', 'profile');
+		$this->Auth->allow('register');
 	}
-
+	
 	public function login()
 	{
 		if($this->Session->check('Auth.User') OR $this->Auth->login()) {
-      $this->redirect(array('controller' => 'users', 'action' => 'profile'));     
+      $this->redirect(array('controller' => 'profiles', 'action' => 'index'));     
     }
 
 		if ($this->request->is('post')) {
@@ -49,9 +49,5 @@ class UsersController extends AppController
 				$this->Session->setFlash(__('The user could not be created. Please, try again.'));
 			}
 		}
-	}
-
-	public function profile()
-	{
 	}
 }

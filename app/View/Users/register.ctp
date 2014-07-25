@@ -2,6 +2,7 @@
   <div class="col-lg-6 col-lg-offset-3">
 		<h2>Register</h2>
 		<div class="well">
+			<?php echo $this->Session->flash('auth'); ?>
    		<?php echo $this->Form->create('User',array('class'=>'form-horizontal','inputDefaults'=>array('label'=>false)));?>
 			 	<div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>

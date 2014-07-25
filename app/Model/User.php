@@ -5,15 +5,21 @@ class User extends AppModel
 {
 	public $validate = array(
 		'username' => array(
-			'notEmpty' => array(
+			'nonEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'A username is required.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'between' => array(
+        'rule' => array('between', 3, 15),
+        'required' => true,
+        'message' => 'Usernames must be between 3 to 15 characters'
+      )
 		),
+
 		'password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -22,18 +28,19 @@ class User extends AppModel
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			)
 		),
+
 		'email' => array(
-			'email' => array(
-				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+      'required' => array(
+        'rule' => array('email', true),   
+        'message' => 'Please provide a valid email address.'    
+      ),
+       'unique' => array(
+        'rule'    => array('isUniqueEmail'),
+        'message' => 'This email is already in use',
+      )
+    )
 	);
 
 	public $hasMany = array(
@@ -64,6 +71,31 @@ class User extends AppModel
 			'counterQuery' => ''
 		)
 	);
+
+	function isUniqueEmail($check)
+	{
+    $email = $this->find(
+      'first',
+      array(
+        'fields' => array(
+            'User.id'
+        ),
+        'conditions' => array(
+            'User.email' => $check['email']
+        )
+      )
+    );
+ 
+    if(!empty($email)) {
+        if(isset($this->data[$this->alias]['id']) AND $this->data[$this->alias]['id'] == $email['User']['id']){
+          return true;
+        }else {
+          return false;
+        }
+    }else {
+      return true;
+    }
+  }
 
 	public function beforeSave($options = array())
 	{
