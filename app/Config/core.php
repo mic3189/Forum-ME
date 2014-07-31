@@ -340,7 +340,7 @@
  *		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
  *	));
  */
-
+define('BASE_URL',''.$_SERVER['HTTP_HOST'].'/forum-me/');
 /**
  * Configure the cache handlers that CakePHP will use for internal
  * metadata like class maps, and model schema.

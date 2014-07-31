@@ -12,8 +12,11 @@
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
+
+    echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js');  
+		echo $this->Html->script('oauthpopup');  
   ?>
-   
+
   <style>
     body {
       padding-top: 70px;

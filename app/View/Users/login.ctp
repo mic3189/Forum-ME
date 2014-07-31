@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-6 col-lg-offset-3">
-		<h2>Login</h2>
+		<h2></h2>
 		<div class="well">
    		<?php echo $this->Session->flash(); ?>
    		<?php echo $this->Form->create('User', array('class'=>'form-horizontal','inputDefaults'=>array('label'=>false)));?>
@@ -33,5 +33,32 @@
 			  Not yet a member. <?php echo $this->Html->link('Register Now!', array('controller'=>'users', 'action'=>'register')); ?>
 			<?php echo $this->Form->end();?>
 		</div>
+		<?php 
+			$ses_user = $this->Session->read('User');
+			$logout = $this->Session->read('logout');
+
+			if(!$this->Session->check('User') && empty($ses_user)) { 
+				echo $this->Html->image('facebook.png',array('id'=>'facebook','style'=>'cursor:pointer;float:left;'));
+ 			}else {
+				echo '<img src="https://graph.facebook.com/'. $ses_user['id'] .'/picture" width="30" height="30"/><div>'.$ses_user['name'].'</div>';	
+				echo '<a href="'.$logout.'">Logout</a>';		
+			}
+		?>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $('#facebook').click(function(e){
+	    $.oauthpopup({
+		    path: 'facebook_cps/login',
+				width:600,
+				height:300,
+		    callback: function() {
+		    	window.location.reload();
+		    }
+	    });
+		e.preventDefault();
+	  });
+	});
+</script>	

@@ -7,21 +7,21 @@
 			 	<div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
 			    <div class="col-sm-10">
-			      <?php echo $this->Form->input('username',array('class'=>'form-control'));?>
+			      <?php echo $this->Form->input('username',array('class'=>'form-control', 'placeholder'=>'admin123'));?>
 			    </div>
 			  </div>
 
 			  <div class="form-group">
 			    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 			    <div class="col-sm-10">
-			      <?php echo $this->Form->input('password',array('class'=>'form-control'));?>
+			      <?php echo $this->Form->input('password',array('class'=>'form-control', 'placeholder'=>'******'));?>
 			    </div>
 			  </div>
 
 			  <div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 			    <div class="col-sm-10">
-			      <?php echo $this->Form->input('email',array('class'=>'form-control'));?>
+			      <?php echo $this->Form->input('email',array('class'=>'form-control', 'placeholder'=>'admin_test@gmail.com'));?>
 			    </div>
 			  </div>
 			 
@@ -30,6 +30,7 @@
 			      <?php echo $this->Form->submit('Register',array('class'=>'btn btn-primary'))?>
 			    </div>
 			  </div>
+			<?php echo $this->Form->end(); ?>
 		</div>
 	</div>
 </div>
